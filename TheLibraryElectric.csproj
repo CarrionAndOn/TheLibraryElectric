@@ -51,6 +51,11 @@
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalSender.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalTrigger.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalTriggerer.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Water\HandMonitor.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Water\IgnoreRigidbody.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Water\RbBuoyancyManager.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Water\SwimmingController.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Water\WaterZone.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Environment\TimeCycleHandler.cs" />
     <Compile Include="Monobehaviours\To Rewrite\LabFusion\BitShop.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Markers\DoNotDestroy.cs" />
@@ -93,12 +98,6 @@
     <Compile Include="Monobehaviours\To Rewrite\VariableHolders\Vector3Holder.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Vehicles\Boat.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Vehicles\RbSpeedMeter.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\DrowningManager.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\HandMonitor.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\IgnoreRigidbody.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\RbBuoyancyManager.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\SwimmingController.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Water\WaterZone.cs" />
     <Compile Include="Patching\VoidCounterPatch.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

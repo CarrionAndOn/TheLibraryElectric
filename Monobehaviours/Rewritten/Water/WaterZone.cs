@@ -1,21 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using SLZ;
+using System.Linq;
 using SLZ.Rig;
 using UnhollowerBaseLib.Attributes;
 using UnityEngine;
 
-namespace TheLibraryElectric.Water
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Water/Water Zone")]
+#endif
     public class WaterZone : MonoBehaviour
     {
+#if UNITY_EDITOR
+        [HideInInspector]
         public List<RbBuoyancyManager> inTriggerCol = new List<RbBuoyancyManager>();
-        public float buoyancyMultiplier = 1.0f; // Adjust this to control the buoyancy threshold.
-        public float midpoint = 50.0f; // Adjust this to control the midpoint of the effect.
-        public bool midpointSink = true; // Will masses at the midpoint sink or float?
-        public bool dampening = true; // If dampening is enabled, drag will increase as the object sinks.
-        public float dampeningAmount = 0.98f; // Dampening multiplier
+
+        [Tooltip("The amount of buoyancy the water will apply to the Rigidbody.")]
+        public float buoyancyMultiplier = 1.0f;
+        [Tooltip("The point of mass where rigidbodies will start sinking")]
+        public float midpoint = 50.0f;
+        [Tooltip("Should the midpoint be a sink point?")]
+        public bool midpointSink = true;
+        [Tooltip("Should the water dampen the rigidbody's velocity?")]
+        public bool dampening = true;
+        [Tooltip("The amount of dampening the water will apply to the Rigidbody.")]
+        public float dampeningAmount = 0.98f;
+        [Tooltip("Should the water ignore the player?")]
         public bool ignoreRigManager;
+#else
+        public List<RbBuoyancyManager> inTriggerCol = new List<RbBuoyancyManager>();
+        public float buoyancyMultiplier = 1.0f;
+        public float midpoint = 50.0f;
+        public bool midpointSink = true;
+        public bool dampening = true;
+        public float dampeningAmount = 0.98f;
+        public bool ignoreRigManager;
+#endif
 
         private void OnTriggerEnter(Collider other)
         {
@@ -26,7 +47,7 @@ namespace TheLibraryElectric.Water
             if(managere != null && managere.isAnOverride)
             {
                 managere.enabled = true;
-                inTriggerCol.Add(managere); // Add the colliding GameObject to the list
+                inTriggerCol.Add(managere);
                 return;
             }
             if (colliderRigidbody != null && colliderRigidbody.GetComponent<RbBuoyancyManager>() == null) // Check if the colliding GameObject has a Rigidbody and doesn't have the RBGravityManager component
@@ -80,14 +101,14 @@ namespace TheLibraryElectric.Water
 
             if (inTriggerCol.Contains(manager)) // Check if the colliding GameObject is in the list
             {
-                if (manager.isAnOverride)
+                if (manager != null && manager.isAnOverride)
                 {
                     manager.enabled = false;
                     manager.onDestroyed.Invoke(manager);
                     return;
                 }
                 colliderRigidbody.useGravity = true; // Enable gravity
-                UnityEngine.Object.Destroy(manager); // Destroy the RBGravityManager component
+                Destroy(manager); // Destroy the RBGravityManager component
                 Rigidbody[] childRbs = colliderRigidbody.GetComponentsInChildren<Rigidbody>(true);
                 foreach (var rb in childRbs)
                 {
@@ -95,7 +116,7 @@ namespace TheLibraryElectric.Water
                     {
                         if (rb.GetComponent<RbBuoyancyManager>() != null)
                         {
-                            UnityEngine.Object.Destroy(rb.GetComponent<RbBuoyancyManager>());
+                            Destroy(rb.GetComponent<RbBuoyancyManager>());
                         }
                     }
                 }
@@ -103,28 +124,28 @@ namespace TheLibraryElectric.Water
 
         }
 
+#if MELONLOADER
         [HideFromIl2Cpp]
         private void OnBuoyancyManagerDestroyed(RbBuoyancyManager manager)
         {
             // Changed this to be an action so that the pooling fix wouldn't cause garbage collection errors
             inTriggerCol.Remove(manager); // Remove the colliding GameObject from the list
         }
+#endif
 
         private void Update()
         {
-            foreach(var rBBuoyancyManager in inTriggerCol) // Loop through the list
+            foreach (var rBBuoyancyManager in inTriggerCol.Where(rBBuoyancyManager => rBBuoyancyManager != null && !rBBuoyancyManager.isAnOverride))
             {
-                if (rBBuoyancyManager != null && !rBBuoyancyManager.isAnOverride)
-                {
-                    rBBuoyancyManager.buoyancyMultiplier = buoyancyMultiplier; // Get the RBGravityManager component & update the gravity amount
-                    rBBuoyancyManager.dampening = dampening;
-                    rBBuoyancyManager.midpoint = midpoint;
-                    rBBuoyancyManager.dampeningAmount = dampeningAmount;
-                    rBBuoyancyManager.midpointSink = midpointSink;
-                }
+                rBBuoyancyManager.buoyancyMultiplier = buoyancyMultiplier; // Get the RBGravityManager component & update the gravity amount
+                rBBuoyancyManager.dampening = dampening;
+                rBBuoyancyManager.midpoint = midpoint;
+                rBBuoyancyManager.dampeningAmount = dampeningAmount;
+                rBBuoyancyManager.midpointSink = midpointSink;
             }
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public WaterZone(IntPtr ptr) : base(ptr) { }
 #endif
     }

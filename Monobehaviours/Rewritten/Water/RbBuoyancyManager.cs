@@ -1,8 +1,11 @@
 using UnityEngine;
 using System;
 
-namespace TheLibraryElectric.Water
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
 {
+#if UNITY_EDITOR
+    [HideInInspector]
+#endif
     public class RbBuoyancyManager : MonoBehaviour
     {
         public Rigidbody thisRb;
@@ -71,7 +74,7 @@ namespace TheLibraryElectric.Water
                 }
             }
             // If mass is the midpoint, go based off the settings
-            if (thisRb != null && thisRb.mass == midpoint)
+            if (thisRb != null && Math.Abs(thisRb.mass - midpoint) < 0.5f)
             {
                 if (midpointSink)
                 {
@@ -93,7 +96,7 @@ namespace TheLibraryElectric.Water
                 }
             }
         }
-#if !UNITY_EDITOR
+#if MELONLOADER
         public RbBuoyancyManager(IntPtr ptr) : base(ptr) { }
 #endif
     }

@@ -14,6 +14,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Signals
 #if UNITY_EDITOR
         [HideInInspector]
 #endif
+        [NonSerialized]
         public static readonly List<SignalReceiver> Receivers = new List<SignalReceiver>();
         
         public string activationKey;

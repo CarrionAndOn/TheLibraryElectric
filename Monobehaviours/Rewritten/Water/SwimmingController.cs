@@ -1,12 +1,18 @@
 ﻿using System;
 using UnityEngine;
 using SLZ.Rig;
-using TheLibraryElectric.Melon;
+using WeatherElectric.TheLibraryElectric.Melon;
 
-namespace TheLibraryElectric.Water
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Water/Swimming Controller")]
+#endif
     public class SwimmingController : MonoBehaviour
     {
+#if UNTIY_EDITOR
+        [HideInInspector]
+#endif
         public RigManager rigManager;
         public float minimumVelocity = 10f;
         public float velocityMultiplier = 100f;
@@ -53,7 +59,8 @@ namespace TheLibraryElectric.Water
                 }
             }
         }
-#if !UNITY_EDITOR
+
+#if MELONLOADER
         public SwimmingController(IntPtr ptr) : base(ptr) { }
 #endif
     }

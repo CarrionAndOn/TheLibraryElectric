@@ -5,11 +5,11 @@ using TheLibraryElectric.Markers;
 using TheLibraryElectric.Misc;
 using TheLibraryElectric.PlayerUtil;
 using TheLibraryElectric.Rigidbodies;
-using TheLibraryElectric.Water;
 using TheLibraryElectric.Marrow;
 using TheLibraryElectric.Vehicles;
 using TheLibraryElectric.VariableHolders;
 using WeatherElectric.TheLibraryElectric.Behaviours.Signals;
+using WeatherElectric.TheLibraryElectric.Behaviours.Water;
 using WeatherElectric.TheLibraryElectric.Melon;
 
 namespace WeatherElectric.TheLibraryElectric
@@ -69,8 +69,6 @@ namespace WeatherElectric.TheLibraryElectric
             ModConsole.Msg("Hopefully injected SwimmingController", 1);
             SerialisationHandler.Inject<InvokeIfLibInstalled>();
             ModConsole.Msg("Hopefully injected InvokeIfLibInstalled", 1);
-            SerialisationHandler.Inject<DrowningManager>();
-            ModConsole.Msg("Hopefully injected DrowningManager", 1);
             SerialisationHandler.Inject<BitShop>();
             ModConsole.Msg("Hopefully injected BitShop", 1);
             SerialisationHandler.Inject<RagdollOnCollide>();
