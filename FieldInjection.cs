@@ -5,15 +5,14 @@ using TheLibraryElectric.Markers;
 using TheLibraryElectric.Misc;
 using TheLibraryElectric.PlayerUtil;
 using TheLibraryElectric.Rigidbodies;
-using TheLibraryElectric.Signals;
 using TheLibraryElectric.Water;
 using TheLibraryElectric.Marrow;
-using TheLibraryElectric.Groups;
-using TheLibraryElectric.Melon;
 using TheLibraryElectric.Vehicles;
 using TheLibraryElectric.VariableHolders;
+using WeatherElectric.TheLibraryElectric.Behaviours.Signals;
+using WeatherElectric.TheLibraryElectric.Melon;
 
-namespace TheLibraryElectric
+namespace WeatherElectric.TheLibraryElectric
 {
     internal static class FieldInjection
     {
@@ -24,9 +23,9 @@ namespace TheLibraryElectric
             ModConsole.Msg("Hopefully injected DoNotFreeze", 1);
             SerialisationHandler.Inject<DoNotDestroy>();
             ModConsole.Msg("Hopefully injected DoNotDestroy", 1);
-            SerialisationHandler.Inject<RecieveSignal>();
+            SerialisationHandler.Inject<SignalReceiver>();
             ModConsole.Msg("Hopefully injected RecieveSignal", 1);
-            SerialisationHandler.Inject<SendSignal>();
+            SerialisationHandler.Inject<SignalSender>();
             ModConsole.Msg("Hopefully injected SendSignal", 1);
             SerialisationHandler.Inject<RigManagerControl>();
             ModConsole.Msg("Hopefully injected RigManagerControl", 1);
@@ -80,10 +79,6 @@ namespace TheLibraryElectric
             ModConsole.Msg("Hopefully injected InvokeWhenCounter", 1);
             SerialisationHandler.Inject<PhotonThruster>();
             ModConsole.Msg("Hopefully injected PhotonThruster", 1);
-            SerialisationHandler.Inject<GroupProxy>();
-            ModConsole.Msg("Hopefully injected GroupProxy", 1);
-            SerialisationHandler.Inject<GroupIdentifier>();
-            ModConsole.Msg("Hopefully injected GroupIdenifier", 1);
             SerialisationHandler.Inject<TLE_SimpleRaycast>();
             ModConsole.Msg("Hopefully injected TLE_SimpleRaycast", 1);
             SerialisationHandler.Inject<RbSpeedMeter>();

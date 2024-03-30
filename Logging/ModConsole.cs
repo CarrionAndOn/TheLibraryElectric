@@ -1,10 +1,14 @@
 ﻿using MelonLoader;
 using System;
+#if UNITY_EDITOR
+using UnityEngine;
+#endif
 
-namespace TheLibraryElectric.Melon
+namespace WeatherElectric.TheLibraryElectric.Melon
 {
     internal static class ModConsole
     {
+#if MELONLOADER
         private static MelonLogger.Instance _logger;
         public static void Setup(MelonLogger.Instance loggerInstance)
         {
@@ -101,5 +105,26 @@ namespace TheLibraryElectric.Melon
                 _logger.Warning(msg, args);
         }
         #endregion
+#endif
+        
+#if UNITY_EDITOR
+        public static void Msg(object obj, int loggingMode = 0)
+        {
+            var msg = loggingMode == 1 ? $"[DEBUG] {obj}" : obj.ToString();
+            Debug.Log(msg);
+        }
+        
+        public static void Warn(object obj, int loggingMode = 0)
+        {
+            var msg = loggingMode == 1 ? $"[DEBUG] {obj}" : obj.ToString();
+            Debug.LogWarning(msg);
+        }
+        
+        public static void Error(object obj, int loggingMode = 0)
+        {
+            var msg = loggingMode == 1 ? $"[DEBUG] {obj}" : obj.ToString();
+            Debug.LogError(msg);
+        }
+#endif
     }
 }

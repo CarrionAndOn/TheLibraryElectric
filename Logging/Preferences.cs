@@ -1,6 +1,6 @@
 ﻿using MelonLoader;
 
-namespace TheLibraryElectric.Melon
+namespace WeatherElectric.TheLibraryElectric.Melon
 {
     internal static class Preferences
     {

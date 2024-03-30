@@ -10,6 +10,10 @@
 *.userosscache
 *.sln.docstates
 
+.idea/
+workspace.xml
+.idea/**/workspace.xml
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -31,6 +35,12 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+
+# adam's thing
+[Ll]inks/
+
+Staging/Mods/*.dll
+*.zip
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -349,7 +359,5 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-
-# BL Assemblies
-[Rr]efrences/
-/ModStats.cs
+.DS_Store
+Staging/Mods
