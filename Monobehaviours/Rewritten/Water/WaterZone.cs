@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using SLZ.Rig;
+#if MELONLOADER
 using UnhollowerBaseLib.Attributes;
+#endif
 using UnityEngine;
 
 namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
@@ -69,7 +71,9 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
                 themanager.midpoint = midpoint;
                 themanager.dampeningAmount = dampeningAmount;
                 themanager.midpointSink = midpointSink;
+#if MELONLOADER
                 themanager.onDestroyed = OnBuoyancyManagerDestroyed;
+#endif
                 Rigidbody[] childRbs = colliderRigidbody.GetComponentsInChildren<Rigidbody>(true);
                 foreach (var rb in childRbs)
                 {

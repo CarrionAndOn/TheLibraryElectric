@@ -2,6 +2,9 @@ using System;
 using UnityEngine;
 using UltEvents;
 using WeatherElectric.TheLibraryElectric.Melon;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace WeatherElectric.TheLibraryElectric.Behaviours.Signals
 {

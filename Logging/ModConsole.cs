@@ -1,4 +1,6 @@
-﻿using MelonLoader;
+﻿#if MELONLOADER
+using MelonLoader;
+#endif
 using System;
 #if UNITY_EDITOR
 using UnityEngine;

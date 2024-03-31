@@ -4,13 +4,14 @@ using System;
 
 namespace TheLibraryElectric.Marrow
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Marrow/Despawn Pooled Object")]
+#endif
     public class DespawnPooledObject : MonoBehaviour
     {
-        private GameObject _self;
         private AssetPoolee _assetPoolee;
         private void Start()
         {
-            _self = gameObject;
             _assetPoolee = gameObject.GetComponent<AssetPoolee>();
         }
 
@@ -18,11 +19,10 @@ namespace TheLibraryElectric.Marrow
         {
             if (_assetPoolee != null)
             {
-                _self.SetActive(false);
                 _assetPoolee.Despawn();
             }
         }
-#if !UNITY_EDITOR
+#if MELONLOADER
         public DespawnPooledObject(IntPtr ptr) : base(ptr) { }
 #endif
     }

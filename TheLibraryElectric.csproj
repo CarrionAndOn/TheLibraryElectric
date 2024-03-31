@@ -46,23 +46,29 @@
     <Compile Include="InternalHelpers\TimeProxy.cs" />
     <Compile Include="Logging\ModConsole.cs" />
     <Compile Include="Logging\Preferences.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Environment\TimeCycleHandler.cs" />
     <Compile Include="Monobehaviours\Rewritten\Internal\ElectricBehaviour.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Marrow\CoolerSpawnablePlacer.cs" />
+    <Compile Include="Monobehaviours\Rewritten\Marrow\DespawnPooledObject.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalReceiver.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalSender.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalTrigger.cs" />
     <Compile Include="Monobehaviours\Rewritten\Signals\SignalTriggerer.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\FloatHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\HandHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\IntHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\QuaternionHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\RigManagerHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\TransformHolder.cs" />
+    <Compile Include="Monobehaviours\Rewritten\VariableHolders\Vector3Holder.cs" />
     <Compile Include="Monobehaviours\Rewritten\Water\HandMonitor.cs" />
     <Compile Include="Monobehaviours\Rewritten\Water\IgnoreRigidbody.cs" />
     <Compile Include="Monobehaviours\Rewritten\Water\RbBuoyancyManager.cs" />
     <Compile Include="Monobehaviours\Rewritten\Water\SwimmingController.cs" />
     <Compile Include="Monobehaviours\Rewritten\Water\WaterZone.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Environment\TimeCycleHandler.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\LabFusion\BitShop.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Markers\DoNotDestroy.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Markers\DoNotFreeze.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Markers\VoidCounterObject.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Marrow\CoolerSpawnablePlacer.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\Marrow\DespawnPooledObject.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Misc\DestroyOnCollision.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Misc\FindClosestRigManager.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Misc\GetRigFromGrip.cs" />
@@ -89,13 +95,6 @@
     <Compile Include="Monobehaviours\To Rewrite\Rigidbodies\FreezeRigidbodies.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Rigidbodies\GravityChamber.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Rigidbodies\RBGravityManager.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\FloatHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\HandHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\IntHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\QuaternionHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\RigManagerHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\TransformHolder.cs" />
-    <Compile Include="Monobehaviours\To Rewrite\VariableHolders\Vector3Holder.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Vehicles\Boat.cs" />
     <Compile Include="Monobehaviours\To Rewrite\Vehicles\RbSpeedMeter.cs" />
     <Compile Include="Patching\VoidCounterPatch.cs" />
@@ -125,9 +124,6 @@
     </Reference>
     <Reference Include="Il2CppSystem">
       <HintPath>Links\MelonLoader\Managed\Il2CppSystem.dll</HintPath>
-    </Reference>
-    <Reference Include="LabFusion">
-      <HintPath>Links\Mods\LabFusion.dll</HintPath>
     </Reference>
     <Reference Include="MelonLoader">
       <HintPath>Links\MelonLoader\MelonLoader.dll</HintPath>

@@ -9,14 +9,49 @@ namespace TheLibraryElectric.InternalHelpers
 {
     public static class SpawnCrate
     {
-        public static void Spawn(Spawnable spawnable, Vector3 position, Quaternion rotation, bool ignorePolicy, Action<GameObject> callback)
+        public static void Spawn(Spawnable spawnable, Vector3 position, Quaternion rotation, bool ignorePolicy = false, Action<GameObject> callback = null)
         {
             AssetSpawner.Register(spawnable);
-            Action<GameObject> spawnAction = go =>
+            AssetSpawner.Spawn(spawnable, position, rotation, new BoxedNullable<Vector3>(null), ignorePolicy, new BoxedNullable<int>(null), (Action<GameObject>)SpawnAction);
+            return;
+
+            void SpawnAction(GameObject go)
             {
-                callback(go);
+                callback?.Invoke(go);
+            }
+        }
+        
+        public static void Spawn(SpawnableCrateReference spawnableCrateReference, Vector3 position, Quaternion rotation, bool ignorePolicy = false, Action<GameObject> callback = null)
+        {
+            Spawnable spawnable = new Spawnable()
+            {
+                crateRef = spawnableCrateReference
             };
-            AssetSpawner.Spawn(spawnable, position, rotation, new BoxedNullable<Vector3>(null), ignorePolicy, new BoxedNullable<int>(null), spawnAction);
+            AssetSpawner.Register(spawnable);
+            AssetSpawner.Spawn(spawnable, position, rotation, new BoxedNullable<Vector3>(null), ignorePolicy, new BoxedNullable<int>(null), (Action<GameObject>)SpawnAction);
+            return;
+
+            void SpawnAction(GameObject go)
+            {
+                callback?.Invoke(go);
+            }
+        }
+        
+        public static void Spawn(Barcode barcode, Vector3 position, Quaternion rotation, bool ignorePolicy = false, Action<GameObject> callback = null)
+        {
+            var crateRef = new SpawnableCrateReference(barcode);
+            var spawnable = new Spawnable
+            {
+                crateRef = crateRef
+            };
+            AssetSpawner.Register(spawnable);
+            AssetSpawner.Spawn(spawnable, position, rotation, new BoxedNullable<Vector3>(null), ignorePolicy, new BoxedNullable<int>(null), (Action<GameObject>)SpawnAction);
+            return;
+
+            void SpawnAction(GameObject go)
+            {
+                callback?.Invoke(go);
+            }
         }
     }
 }
