@@ -3,13 +3,16 @@ using SLZ.SFX;
 using SLZ.Vehicle;
 using SLZ.Rig;
 using static System.Math;
-using TheLibraryElectric.Water;
+#if MELONLOADER
 using UnhollowerRuntimeLib;
+#endif
 using System;
-using TheLibraryElectric.Melon;
+using WeatherElectric.TheLibraryElectric.Behaviours.Water;
+using WeatherElectric.TheLibraryElectric.Melon;
 
-namespace TheLibraryElectric.Vehicles
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Vehicles
 {
+    
     public class Boat : MonoBehaviour
     {
         public MotorSFX motorSFX;
@@ -54,8 +57,13 @@ namespace TheLibraryElectric.Vehicles
 
         void Start()
         {
-            DriverSeat.RegisteredEvent += DelegateSupport.ConvertDelegate<Il2CppSystem.Action>(new System.Action(SeatEnter));
-            DriverSeat.DeRegisteredEvent += DelegateSupport.ConvertDelegate<Il2CppSystem.Action>(new System.Action(SeatExit));
+            #if MELONLOADER
+            DriverSeat.RegisteredEvent += DelegateSupport.ConvertDelegate<Il2CppSystem.Action>(new Action(SeatEnter));
+            DriverSeat.DeRegisteredEvent += DelegateSupport.ConvertDelegate<Il2CppSystem.Action>(new Action(SeatExit));
+            #else
+            DriverSeat.RegisteredEvent += DelegateSupport.ConvertDelegate<Action>(new Action(SeatEnter));
+            DriverSeat.DeRegisteredEvent += DelegateSupport.ConvertDelegate<Action>(new Action(SeatExit));
+            #endif
             _CurrentDelay = DelayBetweenParticles + UnityEngine.Random.Range(-RandomVariance, RandomVariance);
             ModConsole.Msg("Getting absolute of should-be-positive-values", 1);
             ReverseMultiplier = Abs(ReverseMultiplier);
@@ -247,7 +255,8 @@ namespace TheLibraryElectric.Vehicles
             _IsPlayerIn = false;
             _JoystickY = 0f;
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public Boat(IntPtr ptr) : base(ptr) { }
 #endif
     }

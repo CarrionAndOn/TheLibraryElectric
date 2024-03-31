@@ -11,6 +11,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
 {
 #if UNITY_EDITOR
     [AddComponentMenu("Weather Electric/The Library Electric/Water/Water Zone")]
+    [RequireComponent(typeof(Collider))]
 #endif
     public class WaterZone : MonoBehaviour
     {

@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace TheLibraryElectric.Rigidbodies
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Rigidbodies
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Rigidbodies/Force Zone")]
+    [RequireComponent(typeof(Collider))]
+#endif
     public class ForceZone : MonoBehaviour
     {
         public List<Rigidbody> inTriggerRbs = new List<Rigidbody>();
-        public Vector3 forceAmount;
-        public Vector3 ForceAmount
-        {
-            get { return forceAmount; }
-            set { forceAmount = value; }
-        }
+        public Vector3 ForceAmount { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -34,10 +33,11 @@ namespace TheLibraryElectric.Rigidbodies
         {
             foreach (var rb in inTriggerRbs)
             {
-                rb.AddForce(forceAmount, ForceMode.Force);
+                rb.AddForce(ForceAmount, ForceMode.Force);
             }
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public ForceZone(IntPtr ptr) : base(ptr) { }
 #endif
     }

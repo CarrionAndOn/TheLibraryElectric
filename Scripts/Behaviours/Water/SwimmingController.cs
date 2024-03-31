@@ -7,6 +7,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Water
 {
 #if UNITY_EDITOR
     [AddComponentMenu("Weather Electric/The Library Electric/Water/Swimming Controller")]
+    [RequireComponent(typeof(WaterZone))]
 #endif
     public class SwimmingController : MonoBehaviour
     {

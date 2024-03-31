@@ -51,6 +51,10 @@
     <Compile Include="Scripts\Behaviours\PlayerUtil\RagdollOnCollide.cs" />
     <Compile Include="Scripts\Behaviours\PlayerUtil\RagdollZone.cs" />
     <Compile Include="Scripts\Behaviours\PlayerUtil\RigManagerControl.cs" />
+    <Compile Include="Scripts\Behaviours\Rigidbodies\ForceZone.cs" />
+    <Compile Include="Scripts\Behaviours\Rigidbodies\FreezeRigidbodies.cs" />
+    <Compile Include="Scripts\Behaviours\Rigidbodies\GravityChamber.cs" />
+    <Compile Include="Scripts\Behaviours\Rigidbodies\RbGravityManager.cs" />
     <Compile Include="Scripts\Behaviours\Signals\SignalReceiver.cs" />
     <Compile Include="Scripts\Behaviours\Signals\SignalSender.cs" />
     <Compile Include="Scripts\Behaviours\Signals\SignalTrigger.cs" />
@@ -62,6 +66,8 @@
     <Compile Include="Scripts\Behaviours\VariableHolders\RigManagerHolder.cs" />
     <Compile Include="Scripts\Behaviours\VariableHolders\TransformHolder.cs" />
     <Compile Include="Scripts\Behaviours\VariableHolders\Vector3Holder.cs" />
+    <Compile Include="Scripts\Behaviours\Vehicles\Boat.cs" />
+    <Compile Include="Scripts\Behaviours\Vehicles\RbSpeedMeter.cs" />
     <Compile Include="Scripts\Behaviours\Water\HandMonitor.cs" />
     <Compile Include="Scripts\Behaviours\Water\IgnoreRigidbody.cs" />
     <Compile Include="Scripts\Behaviours\Water\RbBuoyancyManager.cs" />
@@ -87,12 +93,6 @@
     <Compile Include="Scripts\To Rewrite\Misc\TimescaleController.cs" />
     <Compile Include="Scripts\To Rewrite\Misc\TLE_SimpleRaycast.cs" />
     <Compile Include="Scripts\To Rewrite\Misc\UpdateTMP.cs" />
-    <Compile Include="Scripts\To Rewrite\Rigidbodies\ForceZone.cs" />
-    <Compile Include="Scripts\To Rewrite\Rigidbodies\FreezeRigidbodies.cs" />
-    <Compile Include="Scripts\To Rewrite\Rigidbodies\GravityChamber.cs" />
-    <Compile Include="Scripts\To Rewrite\Rigidbodies\RBGravityManager.cs" />
-    <Compile Include="Scripts\To Rewrite\Vehicles\Boat.cs" />
-    <Compile Include="Scripts\To Rewrite\Vehicles\RbSpeedMeter.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -1,18 +1,27 @@
 ﻿using UnityEngine;
 using System;
-using TheLibraryElectric.Markers;
-using TheLibraryElectric.Melon;
+using BoneLib;
+using WeatherElectric.TheLibraryElectric.Behaviours.Markers;
+using WeatherElectric.TheLibraryElectric.Melon;
 
-namespace TheLibraryElectric.Rigidbodies
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Rigidbodies
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Rigidbodies/Freeze Rigidbodies")]
+#endif
     public class FreezeRigidbodies : MonoBehaviour
     {
-        private GameObject rigManager;
+        private GameObject _rigManager;
+        
         private void Start()
         {
+#if MELONLOADER
+            var rm = Player.rigManager.gameObject;
+#else
             var rm = GameObject.Find("[RigManager (Blank)]");
+#endif
             ModConsole.Msg("Got rigmanager", 1);
-            rigManager = rm;
+            _rigManager = rm;
             Rigidbody[] allRigidbodies = FindObjectsOfType<Rigidbody>();
             ModConsole.Msg("Got rigidbodies", 1);
             foreach (var rb in allRigidbodies)
@@ -23,15 +32,16 @@ namespace TheLibraryElectric.Rigidbodies
                 {
                     continue; // Skip this if it already DoNotFreeze
                 }
-                if (!rb.transform.IsChildOf(rigManager.transform) && rb.isKinematic)
+                if (!rb.transform.IsChildOf(_rigManager.transform) && rb.isKinematic)
                 {
                     rb.gameObject.AddComponent<DoNotFreeze>();
                 }
             }
         }
+        
         public void Freeze()
         {
-            if (rigManager != null)
+            if (_rigManager != null)
             {
                 ModConsole.Msg("Getting rigidbodies", 1);
                 Rigidbody[] allRigidbodies = FindObjectsOfType<Rigidbody>();
@@ -43,7 +53,7 @@ namespace TheLibraryElectric.Rigidbodies
                         ModConsole.Msg($"{rb.gameObject.name} has DoNotFreeze, skipping", 1);
                         continue; // Skip freezing if the DoNotFreeze component is present
                     }
-                    if (!rb.transform.IsChildOf(rigManager.transform))
+                    if (!rb.transform.IsChildOf(_rigManager.transform))
                     {
                         ModConsole.Msg("Froze all RBs", 1);
                         rb.isKinematic = true;
@@ -55,9 +65,10 @@ namespace TheLibraryElectric.Rigidbodies
                 ModConsole.Msg("Somehow, the rigmanager is null!");
             }
         }
+        
         public void Unfreeze()
         {
-            if (rigManager != null)
+            if (_rigManager != null)
             {
                 ModConsole.Msg("Getting all RBs", 1);
                 Rigidbody[] allRigidbodies = FindObjectsOfType<Rigidbody>();
@@ -68,7 +79,7 @@ namespace TheLibraryElectric.Rigidbodies
                     {
                         continue; // Skip freezing if the DoNotFreeze component is present
                     }
-                    if (!rb.transform.IsChildOf(rigManager.transform))
+                    if (!rb.transform.IsChildOf(_rigManager.transform))
                     {
                         rb.isKinematic = false;
                     }
@@ -84,7 +95,8 @@ namespace TheLibraryElectric.Rigidbodies
         {
             Unfreeze();
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public FreezeRigidbodies(IntPtr ptr) : base(ptr) { }
 #endif
     }

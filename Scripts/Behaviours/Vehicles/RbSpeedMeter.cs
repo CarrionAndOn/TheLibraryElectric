@@ -2,8 +2,11 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace TheLibraryElectric.Vehicles
+namespace WeatherElectric.TheLibraryElectric.Behaviours.Vehicles
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Vehicles/Rigidbody Speed Meter")]
+#endif
     public class RbSpeedMeter : MonoBehaviour
     {
         public Rigidbody targetRigidbody;
@@ -18,7 +21,8 @@ namespace TheLibraryElectric.Vehicles
                 speedText.text = string.Format(speedFormat, speed);
             }
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public RbSpeedMeter(IntPtr ptr) : base(ptr) { }
 #endif
     }
