@@ -2,8 +2,11 @@ using System;
 using SLZ.Rig;
 using UnityEngine;
 
-namespace TheLibraryElectric.PlayerUtil
+namespace WeatherElectric.TheLibraryElectric.Behaviours.PlayerUtil
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Behaviours/Player Util/Ragdoll Zone")]
+#endif
     public class RagdollZone : MonoBehaviour
     {
         public float delayBeforeUnragdoll = 2f;
@@ -18,11 +21,13 @@ namespace TheLibraryElectric.PlayerUtil
                 Invoke(nameof(Unragdoll), delayBeforeUnragdoll);
             }
         }
+        
         private void Unragdoll()
         {
             _rigManager.physicsRig.UnRagdollRig();
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public RagdollZone(IntPtr ptr) : base(ptr) { }
 #endif
     }

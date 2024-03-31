@@ -2,8 +2,11 @@ using System;
 using SLZ.Rig;
 using UnityEngine;
 
-namespace TheLibraryElectric.PlayerUtil
+namespace WeatherElectric.TheLibraryElectric.Behaviours.PlayerUtil
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Behaviours/Player Util/Ragdoll On Collide")]
+#endif
     public class RagdollOnCollide : MonoBehaviour
     {
         public float delayBeforeUnragdoll = 2f;
@@ -23,7 +26,8 @@ namespace TheLibraryElectric.PlayerUtil
         {
             _rigManager.physicsRig.UnRagdollRig();
         }
-#if !UNITY_EDITOR
+        
+#if MELONLOADER
         public RagdollOnCollide(IntPtr ptr) : base(ptr) { }
 #endif
     }

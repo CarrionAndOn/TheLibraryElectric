@@ -2,10 +2,14 @@ using System;
 using UnityEngine;
 using BoneLib;
 
-namespace TheLibraryElectric.PlayerUtil
+namespace WeatherElectric.TheLibraryElectric.Behaviours.PlayerUtil
 {
+#if UNITY_EDITOR
+    [AddComponentMenu("Weather Electric/The Library Electric/Behaviours/Player Util/Player Control")]
+#endif
     public class RigManagerControl : MonoBehaviour
     {
+#if MELONLOADER
         public void RagDoll()
         {
             Player.physicsRig.RagdollRig();
@@ -42,7 +46,46 @@ namespace TheLibraryElectric.PlayerUtil
         {
             Player.remapRig.doubleJump = false;
         }
-#if !UNITY_EDITOR
+#else
+        public void RagDoll()
+        {
+
+        }
+        public void UnRagDoll()
+        {
+
+        }
+        public void Teleport(Vector3 feetPos)
+        {
+
+        }
+        public void Teleport(Vector3 feetPos, bool zerovelocity)
+        {
+
+        }
+        public void Invincible()
+        {
+
+        }
+        public void Mortal()
+        {
+
+        }
+        public void InstantDeath()
+        {
+
+        }
+        public void EnableDoubleJump()
+        {
+
+        }
+        public void DisableDoubleJump()
+        {
+
+        }
+#endif
+        
+#if MELONLOADER
         public RigManagerControl(IntPtr ptr) : base(ptr) { }
 #endif
     }

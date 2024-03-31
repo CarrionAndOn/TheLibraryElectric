@@ -2,7 +2,7 @@ using System;
 using SLZ.Marrow.Data;
 using SLZ.Marrow.Warehouse;
 #if MELONLOADER
-using TheLibraryElectric.InternalHelpers;
+using WeatherElectric.TheLibraryElectric;
 #endif
 using UltEvents;
 using UnityEngine;
@@ -41,7 +41,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                     {
                         crateRef = spawnableCrateReference
                     };
-                    SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
+                    Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
                 }
                 else
                 {
@@ -50,7 +50,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                         crateRef = spawnableCrateReference,
                         policyData = spawnPolicy
                     };
-                    SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
+                    Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
                 }
                 onPlaceEvent.Invoke();
             }
@@ -64,7 +64,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                 {
                     crateRef = spawnableCrateReference
                 };
-                SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
+                Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
             }
             else
             {
@@ -73,7 +73,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                     crateRef = spawnableCrateReference,
                     policyData = spawnPolicy
                 };
-                SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
+                Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy);
             }
             onPlaceEvent.Invoke();
         }
@@ -86,7 +86,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                 {
                     crateRef = spawnableCrateReference
                 };
-                SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy, go =>
+                Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy, go =>
                 {
                     go.GetComponent<Rigidbody>().AddRelativeForce(force);
                 });
@@ -98,7 +98,7 @@ namespace WeatherElectric.TheLibraryElectric.Behaviours.Marrow
                     crateRef = spawnableCrateReference,
                     policyData = spawnPolicy
                 };
-                SpawnCrate.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy, go =>
+                Helpers.AssetWarehouse.Spawn(spawnableCrate, transform.position, Quaternion.identity, ignorePolicy, go =>
                 {
                     go.GetComponent<Rigidbody>().AddRelativeForce(force);
                 });

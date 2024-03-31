@@ -2,9 +2,9 @@
 using UnityEngine;
 using SLZ.Marrow.Pool;
 using SLZ;
-using TheLibraryElectric.Markers;
+using WeatherElectric.TheLibraryElectric.Behaviours.Markers;
 
-namespace TheLibraryElectric.Patching
+namespace WeatherElectric.TheLibraryElectric.Patching
 {
     public static class VoidCounterPatch
     {

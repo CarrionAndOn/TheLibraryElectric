@@ -1,14 +1,14 @@
 using FieldInjector;
-using TheLibraryElectric.Environment;
-using TheLibraryElectric.LabFusion;
-using TheLibraryElectric.Markers;
 using TheLibraryElectric.Misc;
-using TheLibraryElectric.PlayerUtil;
 using TheLibraryElectric.Rigidbodies;
 using TheLibraryElectric.Marrow;
 using TheLibraryElectric.Vehicles;
-using TheLibraryElectric.VariableHolders;
+using WeatherElectric.TheLibraryElectric.Behaviours.Environment;
+using WeatherElectric.TheLibraryElectric.Behaviours.Markers;
+using WeatherElectric.TheLibraryElectric.Behaviours.Marrow;
+using WeatherElectric.TheLibraryElectric.Behaviours.PlayerUtil;
 using WeatherElectric.TheLibraryElectric.Behaviours.Signals;
+using WeatherElectric.TheLibraryElectric.Behaviours.VariableHolders;
 using WeatherElectric.TheLibraryElectric.Behaviours.Water;
 using WeatherElectric.TheLibraryElectric.Melon;
 
@@ -69,8 +69,6 @@ namespace WeatherElectric.TheLibraryElectric
             ModConsole.Msg("Hopefully injected SwimmingController", 1);
             SerialisationHandler.Inject<InvokeIfLibInstalled>();
             ModConsole.Msg("Hopefully injected InvokeIfLibInstalled", 1);
-            SerialisationHandler.Inject<BitShop>();
-            ModConsole.Msg("Hopefully injected BitShop", 1);
             SerialisationHandler.Inject<RagdollOnCollide>();
             ModConsole.Msg("Hopefully injected RagdollOnCollide", 1);
             SerialisationHandler.Inject<InvokeWhenCounter>();
@@ -103,8 +101,6 @@ namespace WeatherElectric.TheLibraryElectric
             ModConsole.Msg("Hopefully injected IntHolder", 1);
             SerialisationHandler.Inject<RigManagerHolder>();
             ModConsole.Msg("Hopefully injected RigManagerHolder", 1);
-            SerialisationHandler.Inject<ApplyRigManager>();
-            ModConsole.Msg("Hopefully injected ApplyRigManager", 1);
             SerialisationHandler.Inject<FindClosestRigManager>();
             ModConsole.Msg("Hopefully injected FindClosestRigManager", 1);
             SerialisationHandler.Inject<TransformHolder>();
